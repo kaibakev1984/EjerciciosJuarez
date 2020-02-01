@@ -2,21 +2,21 @@ lista_nombres_provincias = ["Buenos Aires", "Córdoba", "Santa Fe" ]
 
 """	Se ingresan los votos por cada partido 
 	ATENCIÓN: estos datos solo son para UNA provincia	"""
-def cargarVotos( votos ):
+def guardarVotos( votos ):
 	continuar = "s"
-	while continuar == "s":
+	while continuar:
 		partido = input("Ingresar nombre del partido: ")
 		votos[ partido ] = int(input("Ingresar cantidad de votos del partido: "))
-		continuar = input("Desea continuar? \"s\" para continuar: ")
+		continuar = input("Desea continuar? \"Enter\" para salir... ")
 
 """	Recibe un diccionario "votos_por_provincia" y una lista con los nombres de cada provincia.
 	Los elementos de esta lista servirán como claves para el diccionario. Se usa la función
 	"cargarVotos para llenar los votos para cada provincia en particular.	"""
-def cargarVotosProvincias( votos_por_provincia, lista_nombres_provincias ):
+def guardarVotosProvincias( votos_por_provincia, lista_nombres_provincias ):
 	for provincia in lista_nombres_provincias:
 		print("######Conteo de votaciones en ", provincia, "######")
 		votos = {}
-		cargarVotos( votos )
+		guardarVotos( votos )
 		votos_por_provincia[ provincia ] = votos
 
 """	Recibe un diccionario con los votos por cada provincia, cuyo valor será un 
@@ -40,7 +40,7 @@ def mostrarVotosPorPartido( votos_por_partido ):
 
 def main():
 	votos_por_provincia = {}
-	cargarVotosProvincias(votos_por_provincia, lista_nombres_provincias)
+	guardarVotosProvincias(votos_por_provincia, lista_nombres_provincias)
 	
 	votos_por_partido = calcularVotosPorPartido( votos_por_provincia )
 	mostrarVotosPorPartido( votos_por_partido )
